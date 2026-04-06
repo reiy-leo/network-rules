@@ -1,0 +1,21 @@
+# copied from https://raw.githubusercontent.com/ConnersHua/RuleGo/master/Surge/Ruleset/Extra/Apple/Apple.list
+domain-suffix, aaplimg.com
+domain-suffix, apple.co
+domain-suffix, apple.com
+domain-suffix, apple.com.cn
+domain-suffix, apple-cloudkit.com
+domain-suffix, apple-livephotoskit.com
+domain-suffix, apple-mapkit.com
+domain-suffix, applemusic.com
+domain-suffix, appstore.com
+domain-suffix, apzones.com
+domain-suffix, cdn-apple.com
+domain-suffix, icloud.com
+domain-suffix, icloud.com.cn
+domain-suffix, icloud-content.com
+domain-suffix, me.com
+domain-suffix, mzstatic.com
+domain-keyword, apple.com.akadns.net
+domain-keyword, apple.com.edgekey.net
+domain-keyword, apple-support.akadns.net
+domain-keyword, icloud.com.akadns.net

@@ -1,0 +1,3 @@
+DOMAIN, outlook.office365.com, direct
+DOMAIN, smtp-mail.outlook.com, direct
+DOMAIN, smtp.office365.com, direct

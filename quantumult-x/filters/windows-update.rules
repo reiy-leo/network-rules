@@ -1,0 +1,8 @@
+domain-suffix, dl.delivery.mp.microsoft.com, direct
+domain-suffix, update.microsoft.com, direct
+domain-suffix, windowsupdate.com, direct
+domain-suffix, windowsupdate.microsoft.com, direct
+domain, download.microsoft.com, direct
+domain, wustat.windows.com, direct
+domain, ntservicepack.microsoft.com, direct
+# copied from https://github.com/ConnersHua/RuleGo/blob/master/Surge/Ruleset/Direct.list
