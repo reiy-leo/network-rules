@@ -5,7 +5,8 @@ function buildProxyGroups(proxies = [], proxy_target = "PROXY") {
     { name: "台湾", regex: /(台湾|\bTW\b|\bTaiwan\b)/i, type: "url-test" },
     { name: "日本", regex: /(日本|\bJP\b|\bJapan\b|🇯🇵)/i, type: "select" },
     { name: "新加坡", regex: /(新加坡|\bSG\b|\bSingapore\b|🇸🇬)/i, type: "select" },
-    { name: "美国", regex: /(美国|\bUS\b|\bUnited\s?States\b|🇺🇸)/i, type: "url-test" }
+    { name: "美国", regex: /(美国|\bUS\b|\bUnited\s?States\b|🇺🇸)/i, type: "url-test" },
+    { name: "英国", regex: /(英国|\bGB\b|\bUK\b|\bUnited\s?Kingdoms\b|🇬🇧)/i, type: "url-test" }
   ];
 
   // 这些条目的proxy不展示
