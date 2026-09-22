@@ -62,7 +62,7 @@ function buildProxyGroups(proxies = []) {
   // 4. 组装上层总控组（节点选择、自动选择、故障转移等）
   const mainGroups = [
     {
-      name: "Proxy",
+      name: "良心云",
       type: "select",
       // 优先展示国家组，其次是全局自动/直连，最后列出全量单节点供备选
       proxies: validCountryGroupNames
