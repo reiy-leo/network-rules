@@ -113,9 +113,21 @@ function buildRules(rules = [], proxy_target = 'PROXY') {
   const rules2 = [
     "GEOIP,LAN,DIRECT",
     "GEOIP,CN,DIRECT",
-    "GEOSITE,category-ads-all,REJECT",
+
+    "PROCESS-NAME,aria2c,DIRECT", // aria2c直连
+    "PROCESS-NAME,aria2c.exe,DIRECT",
+    "PROCESS-NAME,Motrix,DIRECT",
+    "PROCESS-NAME,Motrix.exe,DIRECT",
+    "PROCESS-NAME,Motrix Helper,DIRECT",
+    "PROCESS-NAME,Motrix Helper (Renderer),DIRECT",
+    "GEOSITE,category-pt,DIRECT",
+    "GEOSITE,category-public-tracker,DIRECT",
+
+    "GEOSITE,category-ads-all,REJECT", // 拒绝广告
     "RULE-SET,adblock,REJECT",
-    "DOMAIN,api.bilibili.com,REJECT", // 哔哩哔哩打不开
+
+    "DOMAIN,api.bilibili.com,DIRECT", // 哔哩哔哩打不开
+
     "DOMAIN-SUFFIX,mon.zijieapi.com,REJECT", // 字节 今日头条 监控
     "DOMAIN,googletagmanager.com," + proxy_target,
     "DOMAIN,img.bwcgee.cn," + proxy_target
@@ -130,6 +142,7 @@ function buildRules(rules = [], proxy_target = 'PROXY') {
 
 function buildFakeipFilter(items = []) {
   const to_add = [
+    "geosite:category-pt", // 确保p2p tracker不走fakeip
     "*.cmpassport.com",
     "*.cmbchina.com", // 工商银行
     "*.jegotrip.com.cn",
@@ -168,6 +181,10 @@ const main = (config) => {
   }
   // geosite中标记的广告地址，不DNS解析，直接返回200状态
   config.dns["nameserver-policy"]["geosite:category-ads-all"] = "rcode://success";
+  config.dns["nameserver-policy"]["geosite:category-pt"] = [
+    "223.5.5.5",
+    "119.29.29.29"
+  ];
 
   // 不经过fakeip，使用真实IP
   // 等同于Quantumult X中的dns_exclusion_list
