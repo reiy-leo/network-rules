@@ -1,5 +1,5 @@
 
-function buildProxyGroups(proxies = []) {
+function buildProxyGroups(proxies = [], proxy_target = "PROXY") {
   const countryRules = [
     { name: "香港", regex: /(香港|\bHK\b|\bHong\s?Kong\b|🇭🇰)/i, type: "select" },
     { name: "台湾", regex: /(台湾|\bTW\b|\bTaiwan\b)/i, type: "url-test" },
@@ -62,7 +62,7 @@ function buildProxyGroups(proxies = []) {
   // 4. 组装上层总控组（节点选择、自动选择、故障转移等）
   const mainGroups = [
     {
-      name: "Proxy",
+      name: "良心云",
       type: "select",
       // 优先展示国家组，其次是全局自动/直连，最后列出全量单节点供备选
       proxies: validCountryGroupNames
@@ -108,7 +108,7 @@ function buildRuleProviders() {
   return rule_providers;
 }
 
-function buildRules(rules = [], proxy_target = 'Proxy') {
+function buildRules(rules = [], proxy_target = 'PROXY') {
   const rules2 = [
     "GEOIP,LAN,DIRECT",
     "GEOIP,CN,DIRECT",
@@ -151,7 +151,8 @@ function buildFakeipFilter(items = []) {
 }
 
 const main = (config) => {
-  const PROXY_TARGET = 'Proxy'
+  const PROXY_TARGET = '良心云'
+
   config.rules = config.rules || [];
   config.dns = config.dns || {};
   if (!config["rule-providers"]) {
@@ -177,7 +178,7 @@ const main = (config) => {
 
   config.rules = buildRules(config.rules, PROXY_TARGET)
 
-  config["proxy-groups"] = buildProxyGroups(config.proxies);
+  config["proxy-groups"] = buildProxyGroups(config.proxies, PROXY_TARGET);
 
   return config;
 }
