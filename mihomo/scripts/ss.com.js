@@ -1,4 +1,4 @@
-function buildProxyGroups(proxies = []) {
+function buildProxyGroups(proxies = [], proxy_target = "PROXY") {
   const countryRules = [
     { name: "香港", regex: /(香港|\bHK\b|\bHong\s?Kong\b|🇭🇰)/i, type: "select" },
     { name: "台湾", regex: /(台湾|\bTW\b|\bTaiwan\b)/i, type: "url-test" },
@@ -108,7 +108,7 @@ function buildRuleProviders() {
   return rule_providers;
 }
 
-function buildRules(rules = [], proxy_target = 'Proxy') {
+function buildRules(rules = [], proxy_target = 'PROXY') {
   const rules2 = [
     "GEOIP,LAN,DIRECT",
     "GEOIP,CN,DIRECT",
@@ -151,7 +151,9 @@ function buildFakeipFilter(items = []) {
 }
 
 const main = (config) => {
+  // shadowsocks.com默认的代理组是Proxy
   const PROXY_TARGET = 'Proxy'
+
   config.rules = config.rules || [];
   config.dns = config.dns || {};
   if (!config["rule-providers"]) {

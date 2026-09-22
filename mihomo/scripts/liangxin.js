@@ -152,6 +152,7 @@ function buildFakeipFilter(items = []) {
 }
 
 const main = (config) => {
+  // 良心云默认的代理组是“良心云“
   const PROXY_TARGET = '良心云'
 
   config.rules = config.rules || [];
