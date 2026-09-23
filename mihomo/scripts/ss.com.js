@@ -191,15 +191,7 @@ const main = (config) => {
   // 等同于Quantumult X中的dns_exclusion_list
   config.dns["fake-ip-filter"] = buildFakeipFilter(config.dns["fake-ip-filter"]);
 
-  config.tun["route-exclude-address"] = [
-    "192.168.0.0/16",
-    "10.0.0.0/8",
-    "172.16.0.0/12",
-    "169.254.0.0/16",
-    "224.0.0.0/4", // mDNS 组播，扫无线调试必须排除
-    "fe80::/10",
-    "fd00::/8",
-  ];
+
 
   const providers = buildRuleProviders()
   config["rule-providers"] = Object.assign({}, config["rule-providers"], providers)
