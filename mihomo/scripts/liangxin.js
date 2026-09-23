@@ -178,6 +178,9 @@ const main = (config) => {
   if (!config.dns["enable"]) {
     config.dns["enable"] = true;
   }
+  if (!config.tun["enable"]) {
+    config.tun["enable"] = true;
+  }
   if (!config.dns["nameserver-policy"]) {
     config.dns["nameserver-policy"] = {};
   }
