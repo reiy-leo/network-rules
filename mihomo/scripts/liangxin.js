@@ -181,6 +181,9 @@ const main = (config) => {
   if (!config.tun["enable"]) {
     config.tun["enable"] = true;
   }
+  if (!config.sniffer["enable"]) {
+    config.sniffer["enable"] = true;
+  }
   if (!config.dns["nameserver-policy"]) {
     config.dns["nameserver-policy"] = {};
   }
@@ -189,6 +192,11 @@ const main = (config) => {
   config.dns["nameserver-policy"]["geosite:category-pt"] = [
     "223.5.5.5",
     "119.29.29.29"
+  ];
+
+  config.tun['dns-hijack'] = [
+    "any:53", // 默认udp
+    "tcp://any:53"
   ];
 
   // 不经过fakeip，使用真实IP
@@ -204,6 +212,25 @@ const main = (config) => {
     "fe80::/10",
     "fd00::/8",
   ];
+
+  config.sniffer["sniff"] = {
+    "HTTP": {
+      "ports": [80, 8080 - 8880],
+      "override-destination": true
+    },
+    "TLS": {
+      "ports": [443, 8443]
+    },
+    "QUIC": {
+      "ports": [443, 8443]
+    }
+  }
+  config.sniffer["skip-domain"] = [
+    "GEOSITE:private",
+    "Mijia Cloud", // SNI: 小米IoT域名
+    "+.push.apple.com", // Apple推送域名
+  ];
+  config.sniffer["parse-pure-ip"] = true;
 
   const providers = buildRuleProviders()
   config["rule-providers"] = Object.assign({}, config["rule-providers"], providers)
