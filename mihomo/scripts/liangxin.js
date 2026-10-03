@@ -215,14 +215,14 @@ const main = (config) => {
 
   config.sniffer["sniff"] = {
     "HTTP": {
-      "ports": [80, 8080 - 8880],
+      "ports": ["80", "8080-8880"],
       "override-destination": true
     },
     "TLS": {
-      "ports": [443, 8443]
+      "ports": ["443", "8443"]
     },
     "QUIC": {
-      "ports": [443, 8443]
+      "ports": ["443", "8443"]
     }
   }
   config.sniffer["skip-domain"] = [

@@ -209,25 +209,25 @@ const main = (config) => {
     "169.254.0.0/16",
     "224.0.0.0/4", // mDNS组播，扫无线调试必须排除
     "fe80::/10",
-    "fd00::/8",
+    "fd00::/8"
   ];
 
   config.sniffer["sniff"] = {
     "HTTP": {
-      "ports": [80, 8080 - 8880],
+      "ports": ["80", "8080-8880"],
       "override-destination": true
     },
     "TLS": {
-      "ports": [443, 8443]
+      "ports": ["443", "8443"]
     },
     "QUIC": {
-      "ports": [443, 8443]
+      "ports": ["443", "8443"]
     }
   }
   config.sniffer["skip-domain"] = [
     "GEOSITE:private",
     "Mijia Cloud", // SNI: 小米IoT域名
-    "+.push.apple.com", // Apple推送域名
+    "+.push.apple.com" // Apple推送域名
   ];
   config.sniffer["parse-pure-ip"] = true;
 
